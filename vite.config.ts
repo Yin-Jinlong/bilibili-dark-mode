@@ -12,7 +12,7 @@ export default defineConfig({
             entry: 'src/main.ts',
             userscript: {
                 author:'Yin-Jinlong',
-                version:'0.1',
+                version:'1.0',
                 icon: 'https://vitejs.dev/logo.svg',
                 homepage:'https://github.com/Yin-Jinlong/bilibili-dark-mode',
                 homepageURL:'https://github.com/Yin-Jinlong/bilibili-dark-mode',

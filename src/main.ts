@@ -1,17 +1,19 @@
 import cssText from './dark.css?raw'
 
-function addLink(url: string) {
-    let dark = document.createElement('link')
-    dark.rel = 'stylesheet'
-    dark.href = url
-    document.head.appendChild(dark)
+const CDN = 'https://s1.hdslb.com/bfs/static/jinkela/long/laputa-css'
+
+async function getText(path: string): Promise<string> {
+    const res = await fetch(`${CDN}/${path}`)
+    return await res.text()
 }
 
-addLink('https://s1.hdslb.com/bfs/static/jinkela/long/laputa-css/map.css')
-addLink('https://s1.hdslb.com/bfs/static/jinkela/long/laputa-css/dark.css')
+function addStyle(text: string) {
+    let style = document.createElement('style')
+    style.textContent = text
+    document.body.appendChild(style)
+}
 
+getText('dark.css').then(addStyle)
+getText('map.css').then(addStyle)
 
-let style = document.createElement('style')
-style.setAttribute('type', 'text/css')
-style.innerHTML = cssText
-document.body.append(style)
+addStyle(cssText)
